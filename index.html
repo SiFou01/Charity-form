@@ -326,6 +326,8 @@
   <script>
     function showForm() {
       document.getElementById('form-container').style.display = 'block';
+      const button = document.querySelector('.center-section button');
+      button.style.display = 'none'; // Hide the button
       window.scrollTo({
         top: document.getElementById('form-container').offsetTop,
         behavior: 'smooth'
