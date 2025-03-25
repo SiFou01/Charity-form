@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>استمارة المشاركة - جمعية السلسبيل</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Tahoma", sans-serif;
+      direction: rtl; /* Right-to-left layout for Arabic */
+    }
+
+    header {
+      position: relative;
+      width: 100%;
+      height: 80px;
+      background-color: #f5f5f5;
+    }
+
+    /* Flag on the left */
+    #algerian-flag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      height: 60px;
+    }
+
+    /* Charity logo on the right */
+    #salsabil-logo-top {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 60px;
+    }
+
+    .center-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 100px;
+    }
+
+    .center-section img {
+      width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .center-section button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .center-section button:hover {
+      background-color: #218838;
+    }
+
+    #form-container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      display: none; /* hidden by default */
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+
+    #form-container h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group input[type="url"],
+    .form-group input[type="email"],
+    .form-group textarea,
+    .form-group input[type="file"] {
+      padding: 8px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group textarea {
+      min-height: 80px;
+    }
+
+    .form-group table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .form-group table th,
+    .form-group table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .form-group table th {
+      background-color: #e9ecef;
+    }
+
+    /* Internal rules section */
+    #rules {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      display: none; /* hidden initially */
+    }
+
+    #rules h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .buttons .submit-btn {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .buttons .submit-btn:hover {
+      background-color: #0069d9;
+    }
+
+    .buttons .show-rules-btn {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+    .buttons .show-rules-btn:hover {
+      background-color: #e0a800;
+    }
+
+    .buttons .hide-rules-btn {
+      background-color: #6c757d;
+      color: #fff;
+    }
+
+    .buttons .hide-rules-btn:hover {
+      background-color: #5a6268;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER with Flag (left) and Logo (right) -->
+  <header>
+    <img id="algerian-flag" src="assets/algerian_flag.png" alt="Algerian Flag" />
+    <img id="salsabil-logo-top" src="assets/salsabil_logo.png" alt="Salsabil Charity Logo" />
+  </header>
+
+  <!-- Center Section with Large Logo and Access Button -->
+  <div class="center-section">
+    <img src="assets/salsabil_logo.png" alt="Salsabil Charity Logo" />
+    <button onclick="showForm()">دخول إلى الاستمارة</button>
+  </div>
+
+  <!-- The Form Container -->
+  <div id="form-container">
+    <h2>استمارة المشاركة</h2>
+    <form>
+      <!-- 1) إسم الجمعية -->
+      <div class="form-group">
+        <label for="associationName">إسم الجمعية:</label>
+        <input type="text" id="associationName" name="associationName" required />
+      </div>
+
+      <!-- 2) العنوان -->
+      <div class="form-group">
+        <label for="address">العنوان:</label>
+        <input type="text" id="address" name="address" required />
+      </div>
+
+      <!-- 3) الهاتف -->
+      <div class="form-group">
+        <label for="phone">الهاتف:</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+
+      <!-- 4) الفاكس -->
+      <div class="form-group">
+        <label for="fax">الفاكس:</label>
+        <input type="tel" id="fax" name="fax" />
+      </div>
+
+      <!-- 5) الموقع الإلكتروني -->
+      <div class="form-group">
+        <label for="website">الموقع الإلكتروني (اختياري):</label>
+        <input type="url" id="website" name="website" placeholder="http://example.com" />
+      </div>
+
+      <!-- 6) البريد الإلكتروني -->
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <!-- 7) الموقع على صفحة الفايسبوك -->
+      <div class="form-group">
+        <label for="facebook">صفحة الفايسبوك:</label>
+        <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/yourpage" />
+      </div>
+
+      <!-- 8) قرار الإعتماد (تحميل ملف PDF) -->
+      <div class="form-group">
+        <label for="approvalDoc">قرار الإعتماد (PDF):</label>
+        <input type="file" id="approvalDoc" name="approvalDoc" accept=".pdf" />
+      </div>
+
+      <!-- 9) الهيئة المديرة: جدول -->
+      <div class="form-group">
+        <label>الهيئة المديرة:</label>
+        <table>
+          <thead>
+            <tr>
+              <th>الإسم واللقب</th>
+              <th>المهنة</th>
+              <th>الصفة في الجمعية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Add rows as needed -->
+            <tr>
+              <td><input type="text" name="boardName1" /></td>
+              <td><input type="text" name="boardJob1" /></td>
+              <td><input type="text" name="boardRole1" /></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="boardName2" /></td>
+              <td><input type="text" name="boardJob2" /></td>
+              <td><input type="text" name="boardRole2" /></td>
+            </tr>
+            <!-- You can dynamically add more rows with JS if needed -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 10) ميادين نشاط الجمعية -->
+      <div class="form-group">
+        <label for="fieldsOfActivity">ميادين نشاط الجمعية:</label>
+        <textarea id="fieldsOfActivity" name="fieldsOfActivity"></textarea>
+      </div>
+
+      <!-- 11) موجز تعريفي لقسم التكفل بالأرامل والايتام -->
+      <div class="form-group">
+        <label for="widowsOrphans">موجز تعريفي لقسم التكفل بالأرامل والايتام:</label>
+        <textarea id="widowsOrphans" name="widowsOrphans"></textarea>
+      </div>
+
+      <!-- A checkbox or statement indicating reading the rules -->
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="agreeRules" name="agreeRules" required />
+          أقر بأني اطلعت على النظام الداخلي للمشاركة وأوافق عليه
+        </label>
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="show-rules-btn" onclick="toggleRules()">عرض النظام الداخلي</button>
+        <button type="submit" class="submit-btn">إرسال</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Internal Rules Section -->
+  <div id="rules">
+    <h2>النظام الداخلي للمشاركة</h2>
+    <p>
+      تنظم الجمعية الخيرية "السلسبيل" بمدينة مستغانم (الجزائر)، الدورة السادسة لبرنامج ربيع الأمل، لفائدة 200 طفل يتيم، لمدة 08 أيام، خلال الاسبوع الاول من شهر سبتمبر 2025.
+    </p>
+    <p>
+      يشارك في البرنامج عشر (10) جمعيات من الجزائر، بالإضافة إلى جمعيات من الدول المغاربية الشقيقة والصديقة (تونس، ليبيا، موريتانيا والصحراء الغربية).
+    </p>
+    <ul>
+      <li>تتكفل الجمعية الخيرية "السلسبيل" مستغانم (الجزائر)، بمصاريف الإقامة والإيواء للوفود المشاركة طيلة أيام التظاهرة.</li>
+      <li>تتكفل الجمعيات المشاركة بنفقات النقل طيلة أيام التظاهرة.</li>
+      <li>حدد تاريخ الخميس 01 ماي 2025 كآخر أجل للتسجيل الأولي.</li>
+      <li>يعتبر هذا التسجيل تسجيلاً أولياً، يتبعه تسجيل ثانٍ بعد الموافقة على مشاركة الجمعية من طرف لجنة التنظيم.</li>
+      <li>يشهد الممثل القانوني للجمعية أنه قد اطلع على النظام الداخلي للمشاركة ووافق عليه.</li>
+    </ul>
+    <div class="buttons">
+      <button class="hide-rules-btn" onclick="toggleRules()">إخفاء</button>
+    </div>
+  </div>
+
+  <script>
+    function showForm() {
+      document.getElementById('form-container').style.display = 'block';
+      window.scrollTo({
+        top: document.getElementById('form-container').offsetTop,
+        behavior: 'smooth'
+      });
+    }
+
+    function toggleRules() {
+      const rules = document.getElementById('rules');
+      if (rules.style.display === 'none' || rules.style.display === '') {
+        rules.style.display = 'block';
+      } else {
+        rules.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
