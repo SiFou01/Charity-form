@@ -1,11 +1,11 @@
 @font-face {
   font-family: "18 Khebrat Musamim";
-  src: url("path-to-font/18-khebrat-musamim.woff2") format("woff2");
+  src: url("fonts\18 Khebrat Musamim Regular.ttf") format("ttf");
 }
 
 @font-face {
   font-family: "Janna LT";
-  src: url("path-to-font/janna-lt.woff2") format("woff2");
+  src: url("fonts\Janna LT Bold.ttf") format("ttf");
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap");
