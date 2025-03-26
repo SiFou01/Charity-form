@@ -140,4 +140,14 @@ if (participationForm) {
       }
     }
   });
+
+  // Reset border color on input
+  const declarantName = document.getElementById('declarantName');
+  if (declarantName) {
+    declarantName.addEventListener('input', function () {
+      if (this.value.trim()) {
+        this.style.borderColor = ''; // Reset border color when valid
+      }
+    });
+  }
 }
