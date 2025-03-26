@@ -135,6 +135,9 @@ body {
   padding: 40px;
   font-family: "18 Khebrat Musamim", sans-serif; /* Updated font-family */
   margin-bottom: 40px; /* Add consistent margin between text and form container */
+  max-width: 900px; /* Ensure consistent width */
+  margin: 0 auto; /* Center the container */
+  word-wrap: break-word; /* Wrap text to a new line if too long */
 }
 
 .letter-content {
@@ -425,6 +428,9 @@ body {
   margin: 0 auto;
   padding: 20px;
   direction: rtl;
+  max-width: 900px; /* Ensure consistent width */
+  margin: 0 auto; /* Center the container */
+  word-wrap: break-word; /* Wrap text to a new line if too long */
 }
 
 .registration-form__title {
