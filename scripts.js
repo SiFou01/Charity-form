@@ -104,14 +104,14 @@ if (participationForm) {
     // Validate the table
     const tableRows = document.querySelectorAll('#boardTable tbody tr');
     const boardTableError = document.getElementById('boardTableError');
-    const isTableValid = Array.from(tableRows).some(row => {
+    const filledRows = Array.from(tableRows).filter(row => {
       const inputs = row.querySelectorAll('input');
-      return Array.from(inputs).some(input => input.value.trim() !== '');
+      return Array.from(inputs).every(input => input.value.trim() !== '');
     });
 
-    if (!isTableValid) {
+    if (filledRows.length < 7) {
       isValid = false;
-      boardTableError.textContent = 'يرجى ملء صف واحد على الأقل في الجدول.';
+      boardTableError.textContent = 'يرجى ملء سبعة صفوف على الأقل في الجدول.';
       boardTableError.style.display = 'block';
       if (!firstErrorElement) {
         firstErrorElement = document.getElementById('boardTable');
