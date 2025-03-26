@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>استمارة المشاركة - جمعية السلسبيل</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="page-header">
+    <img src="algeria-flag.png" alt="Algeria Flag" class="header-flag" />
+    <div class="header-titles">
+        <h1 class="primary-title">دعوة للمشاركة في برنامج ربيع الامل</h1>
+      <h2 class="secondary-title">الجمعية الخيرة سلسبيل</h2>
+    </div>
+    <img src="salsabil-logo.png" alt="Salsabil Logo" class="header-logo" />
+  </header>
+
+  <article class="letter-container">
+    <div class="letter-content">
+      <header class="letter-greeting">
+        ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللهِ وَبَرَكَاتُهُ
+      </header>
+      <h1 class="letter-title">إلى السيدات والسادة رؤساء الجمعيات الخيرية :</h1>
+      <p class="letter-paragraph">
+        يشرفنا ان نعلم سيادتكم الموقرة وشخصيتكم النبيلة أن جمعيتنا تنظم سنويا
+        برنامجا لفائدة الأطفال اليتامى موسوما ب "ربيع الامل"، محتواه برمجة مخيم
+        لفائدة هذه الشريحة من المجتمع لمدة اسبوع، تتخلله العديد من النشاطات
+        التربوية، التثقيفية، السياحية، الترفيهية.
+      </p>
+      <p class="letter-paragraph">
+        نظمت الدورة الخامسة للبرنامج في الفترة من 12 الى 17 سبتمبر 2023، وجمعت
+        اربعمائة (400) طفل يتيم من خمسة عشر (15) ولاية من الوطن، وذلك بمركز
+        الاستقبال والتوجيه لمؤسسة "ايبروك للنقل البحري"، بمنطقة التوسع السياحي
+        "صابلات" بمستغانم.
+      </p>
+      <p class="letter-paragraph">
+        تفكر الجمعية في نقل الطبعة القادمة للبرنامج من طابعها الوطني إلى المغاربي،
+        من خلال استضافة مائتي (200) طفل يتيم من دول المغرب العربي، مؤطرين من
+        جمعيات خيرية من الدول الشقيقة والصديقة (تونس، ليبيا، موريتانيا والصحراء
+        الغربية"، وذلك خلال الاسبوع الاول من شهر سبتمبر 2025.
+      </p>
+      <footer class="letter-footer">
+        لكم منا سيداتي، سادتي وافر معاني الود والإحترام
+      </footer>
+    </div>
+  </article>
+
+  <div class="participation-form">
+    <div class="participation-form__container">
+      <div class="participation-form__header">
+        <h2 class="participation-form__title">استمارة المشاركة</h2>
+      </div>
+      <div class="participation-form__content">
+        <form id="participationForm" class="participation-form__fields" novalidate>
+          <div class="form-group">
+            <label for="associationName" class="form-group__label">إسم الجمعية:</label>
+            <input type="text" id="associationName" name="associationName" class="form-group__input" required pattern="[^\d]+" title="يرجى إدخال نص فقط" />
+            <span class="error-message" id="associationNameError"></span>
+          </div>
+          <div class="form-group">
+            <label for="address" class="form-group__label">العنوان:</label>
+            <input type="text" id="address" name="address" class="form-group__input" required />
+            <span class="error-message" id="addressError"></span>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-group__label">الهاتف:</label>
+            <input type="tel" id="phone" name="phone" class="form-group__input" required pattern="\d+" title="يرجى إدخال أرقام فقط" />
+            <span class="error-message" id="phoneError"></span>
+          </div>
+          <div class="form-group">
+            <label for="fax" class="form-group__label">الفاكس:</label>
+            <input type="tel" id="fax" name="fax" class="form-group__input"  required pattern="\d+" title="يرجى إدخال أرقام فقط" />
+            <span class="error-message" id="faxError"></span>
+          </div>
+          <div class="form-group">
+            <label for="website" class="form-group__label">الموقع الإلكتروني (اختياري):</label>
+            <input type="url" id="website" name="website" class="form-group__input" placeholder="http://example.com" />
+            <span class="error-message" id="websiteError"></span>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-group__label">البريد الإلكتروني:</label>
+            <input type="email" id="email" name="email" class="form-group__input" required />
+            <span class="error-message" id="emailError"></span>
+          </div>
+          <div class="form-group">
+            <label for="facebook" class="form-group__label">صفحة الفايسبوك:</label>
+            <input type="url" id="facebook" name="facebook" class="form-group__input" required placeholder="https://facebook.com/yourpage" />
+            <span class="error-message" id="facebookError"></span>
+          </div>
+          <div class="form-group">
+            <label for="approvalDoc" class="form-group__label">قرار الإعتماد (PDF):</label>
+            <input type="file" id="approvalDoc" name="approvalDoc" required class="form-group__file" accept=".pdf" />
+            <span class="error-message" id="approvalDocError"></span>
+          </div>
+          <div class="form-group">
+            <label>الهيئة المديرة:</label>
+            <table id="boardTable">
+              <thead>
+                <tr>
+                  <th>الإسم واللقب</th>
+                  <th>المهنة</th>
+                  <th>الصفة في الجمعية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="text" name="boardName1" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob1" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole1" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName2" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob2" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole2" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName3" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob3" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole3" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName4" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob4" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole4" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName5" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob5" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole5" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName6" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob6" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole6" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName7" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob7" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole7" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName8" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob8" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole8" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName9" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob9" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole9" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="boardName10" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardJob10" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                  <td><input type="text" name="boardRole10" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="error-message" id="boardTableError"></span>
+            <button type="button" class="addrow_button" onclick="addRow()">إضافة صف</button>
+          </div>
+          <div class="form-group">
+            <label for="fieldsOfActivity" class="form-group__label">ميادين نشاط الجمعية:</label>
+            <textarea id="fieldsOfActivity" name="fieldsOfActivity" class="form-group__textarea" required></textarea>
+            <span class="error-message" id="fieldsOfActivityError"></span>
+          </div>
+          <div class="form-group">
+            <label for="widowsOrphans" class="form-group__label">موجز تعريفي لقسم التكفل بالأرامل والايتام:</label>
+            <textarea id="widowsOrphans" name="widowsOrphans" class="form-group__textarea" required></textarea>
+            <span class="error-message" id="widowsOrphansError"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <article class="registration-form">
+    <h1 class="registration-form__title">النظام الداخلي للمشاركة :</h1>
+    <div class="registration-form__content">
+      <ul class="registration-form__rules">
+        <li class="registration-form__rule">
+          تنظم الجمعية الخيرية "السلسبيل" بمدينة مستغانم (الجزائر)، الدورة السادسة لبرنامج ربيع الأمل، لفائدة 200 طفل يتيم، لمدة 08 أيام، خلال الاسبوع الاول من شهر سبتمبر 2025.
+        </li>
+        <li class="registration-form__rule">
+          يشارك في البرنامج عشر (10) جمعيات من الجزائر، بالإضافة إلى جمعيات من الدول المغاربية الشقيقة والصديقة (تونس، ليبيا، موريتانيا والصحراء الغربية)
+        </li>
+        <li class="registration-form__rule">
+          تتكفل الجمعية الخيرية "السلسبيل" مستغانم (الجزائر)، بمصاريف الإقامة والإيواء للوفود المشاركة طيلة ايام التظاهرة.
+        </li>
+        <li class="registration-form__rule">
+          تتكفل الجمعيات المشاركة بنفقات النقل طيلة ايام التظاهرة.
+        </li>
+        <li class="registration-form__rule">
+          حدد تاريخ الخميس 01 ماي 2025 كآخر أجل للتسجيل الاولي.
+        </li>
+        <li class="registration-form__rule">
+          يعتبر هذا التسجيل تسجيلا أوليا، يتبعه تسجيل ثاني بعد الموافقة على مشاركة الجمعية من طرف لجنة التنظيم.
+        </li>
+      </ul>
+
+      <p class="registration-form__declaration">
+        يشهد السيد بصفته رئيس الجمعية أنه قد اطلع على النظام الداخلي للمشاركة ووافق عليه.
+      </p>
+
+      <div class="registration-form__agreement">
+        <label class="form-group__label">موافق</label>
+        <input type="checkbox" id="agreeRules" class="registration-form__agreement-checkbox" form="participationForm" aria-label="الموافقة على النظام الداخلي" required />
+        <span class="error-message" id="agreeRulesError"></span>
+      </div>
+
+      <button type="submit" class="registration-form__submit" id="submitButton" form="participationForm">إرسال الاستمارة</button>
+    </div>
+  </article>
+
+  <footer class="page-footer">
+    <div></div>
+    <p class="copyright-text">2025 © Salsabil Charity</p>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>

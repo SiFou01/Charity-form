@@ -1,0 +1,605 @@
+@font-face {
+  font-family: "18 Khebrat Musamim";
+  src: url("path-to-font/18-khebrat-musamim.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Janna LT";
+  src: url("path-to-font/janna-lt.woff2") format("woff2");
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Tahoma", sans-serif;
+  direction: rtl; /* Right-to-left layout for Arabic */
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.page-header {
+  height: 201px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribute items evenly */
+  gap: 20px; /* Add spacing between elements */
+  padding: 16px 50px;
+  border-bottom: 1px solid #000;
+  background-color: #fff;
+  text-align: center; /* Center the text */
+}
+
+.header-logo {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  margin-right: 0;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex: 1;
+}
+
+.primary-title {
+  color: #f00;
+  font-family: "18 Khebrat Musamim", sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  margin : 0;
+}
+
+.secondary-title {
+  color: #05e200;
+  font-family: "18 Khebrat Musamim", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin : 0;
+}
+
+.header-flag {
+  width: 160px;
+  height: 84px;
+  border: 1px solid #000;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.main-logo {
+  width: 558px;
+  height: 558px;
+  opacity: 0.8;
+  object-fit: contain;
+}
+
+.cta-container {
+  margin-top: 55px;
+}
+
+.cta-button {
+  border: none;
+  border-radius: 20px;
+  padding: 11px 36px;
+  color: #000;
+  font-family: "Janna LT", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #8afd33;
+}
+
+.cta-button:hover {
+  background-color: #6ecf2a;
+}
+
+.page-footer {
+  width: 100%;
+  padding: 28px 0;
+  text-align: center;
+  border-top: 1px solid #000;
+}
+
+.copyright-text {
+  color: #000;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.letter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 40px;
+  font-family: "18 Khebrat Musamim", sans-serif; /* Updated font-family */
+}
+
+.letter-content {
+  width: 100%;
+  max-width: 1191px;
+}
+
+.letter-greeting {
+  font-size: 55px;
+  color: #000;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.letter-title {
+  font-size: 40px;
+  color: #000;
+  text-align: right;
+  margin-bottom: 30px;
+  font-weight: 100;
+}
+
+.letter-paragraph {
+  font-size: 24px;
+  color: #000;
+  text-align: right;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.letter-footer {
+  font-size: 26px;
+  color: #000;
+  text-align: right;
+}
+
+@media (max-width: 991px) {
+  .letter-container {
+    padding: 32px;
+  }
+
+  .letter-greeting {
+    font-size: 45px;
+  }
+
+  .letter-title {
+    font-size: 35px;
+  }
+
+  .letter-paragraph {
+    font-size: 22px;
+  }
+
+  .letter-footer {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .letter-container {
+    padding: 24px;
+  }
+
+  .letter-greeting {
+    font-size: 35px;
+    margin-bottom: 40px;
+  }
+
+  .letter-title {
+    font-size: 30px;
+  }
+
+  .letter-paragraph {
+    font-size: 20px;
+  }
+
+  .letter-footer {
+    font-size: 22px;
+  }
+}
+
+#form-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+#form-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: "Janna LT", sans-serif;
+  font-size: 22px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group input[type="file"] {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  max-height: 150px; /* Restrict maximum height */
+  max-width: 100%; /* Restrict maximum width */
+  overflow-y: auto; /* Add scroll if content exceeds max height */
+}
+
+.form-group table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-group table th,
+.form-group table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-family: "Janna LT", sans-serif; /* Updated font-family */
+}
+
+.form-group table th {
+  background-color: #e9ecef;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.buttons .submit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.buttons .submit-btn:hover {
+  background-color: #0069d9;
+}
+
+.participation-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 24px;
+}
+
+.participation-form__container {
+  width: 100%;
+  max-width: 1033px;
+  background-color: rgba(217, 217, 217, 0.31);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.participation-form__header {
+  width: 100%;
+  height: 107px;
+  background-color: #f00;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.participation-form__title {
+  color: #05e200;
+  font-size: 50px;
+  font-weight: 500;
+  font-family: "18 Khebrat Musamim", sans-serif;
+}
+
+.participation-form__content {
+  padding: 32px;
+}
+
+.participation-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group__label {
+  color: #000;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: "Janna LT", sans-serif;
+  text-align: right;
+}
+
+.form-group__input,
+.form-group__textarea,
+.form-group__file {
+  width: 100%;
+  height: 50px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-family: "Tahoma", sans-serif;
+}
+
+.form-group__textarea {
+  height: 100px;
+  resize: none;
+}
+
+.form-group__file {
+  padding: 8px;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.addrow_button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Janna LT", sans-serif;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buttons .submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Janna LT", sans-serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.buttons .submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.registration-form {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl;
+}
+
+.registration-form__title {
+  color: #000;
+  font-family: "18 Khebrat Musamim", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.registration-form__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registration-form__rules {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registration-form__rule {
+  color: #000;
+  font-family: "18 Khebrat Musamim", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: right;
+  line-height: 1.5;
+}
+
+.registration-form__declaration {
+  color: #000;
+  font-family: "18 Khebrat Musamim", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: right;
+  margin: 20px 0;
+}
+
+.registration-form__agreement {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.registration-form__agreement-label {
+  color: #000;
+  font-family: "18 Khebrat Musamim", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.registration-form__agreement-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+.registration-form__submit {
+  width: 336px;
+  height: 78px;
+  border-radius: 20px;
+  border: none;
+  color: #000;
+  font-family: "Janna LT", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 20px auto;
+  background-color: #8afd33;
+}
+
+.registration-form__submit:hover {
+  background-color: #6ecf2a;
+}
+
+@media (max-width: 991px) {
+  .participation-form {
+    padding: 20px;
+  }
+
+  .participation-form__title {
+    font-size: 40px;
+  }
+
+  .participation-form__content {
+    padding: 24px;
+  }
+
+  .participation-form__fields {
+    gap: 20px;
+  }
+
+  .registration-form {
+    max-width: 991px;
+    padding: 15px;
+  }
+
+  .registration-form__title {
+    font-size: 32px;
+  }
+
+  .registration-form__rule {
+    font-size: 20px;
+  }
+
+  .registration-form__declaration {
+    font-size: 24px;
+  }
+
+  .registration-form__agreement-label {
+    font-size: 24px;
+  }
+
+  .registration-form__submit {
+    width: 280px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .participation-form {
+    padding: 16px;
+  }
+
+  .participation-form__title {
+    font-size: 32px;
+  }
+
+  .participation-form__content {
+    padding: 16px;
+  }
+
+  .participation-form__fields {
+    gap: 16px;
+  }
+
+  .registration-form {
+    max-width: 640px;
+    padding: 10px;
+  }
+
+  .registration-form__title {
+    font-size: 28px;
+  }
+
+  .registration-form__rule {
+    font-size: 18px;
+  }
+
+  .registration-form__declaration {
+    font-size: 20px;
+  }
+
+  .registration-form__agreement-label {
+    font-size: 20px;
+  }
+
+  .registration-form__submit {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  font-family: "Janna LT", sans-serif;
+  margin-top: 5px;
+  display: none; /* Hidden by default */
+}
