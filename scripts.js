@@ -120,6 +120,18 @@ if (participationForm) {
       boardTableError.style.display = 'none';
     }
 
+    // Validate declarant name input
+    const declarantName = document.getElementById('declarantName');
+    if (declarantName && !declarantName.value.trim()) {
+      isValid = false;
+      declarantName.style.borderColor = 'red'; // Highlight border in red
+      if (!firstErrorElement) {
+        firstErrorElement = declarantName;
+      }
+    } else if (declarantName) {
+      declarantName.style.borderColor = ''; // Reset border color
+    }
+
     if (!isValid) {
       event.preventDefault(); // Prevent form submission if there are errors
       if (firstErrorElement) {

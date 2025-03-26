@@ -604,3 +604,22 @@ body {
   margin-top: 5px;
   display: none; /* Hidden by default */
 }
+
+.declaration-input {
+  display: inline-block;
+  width: 250px; /* Big enough for first and last name */
+  padding: 8px;
+  font-size: 18px;
+  font-family: "Janna LT", sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px; /* Add spacing around the input */
+}
+
+.declaration-input:invalid {
+  border-color: red; /* Highlight border in red if invalid */
+}
+
+.declaration-input:valid {
+  border-color: #ccc; /* Reset border color when valid */
+}
