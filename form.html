@@ -48,7 +48,7 @@
         <h2 class="participation-form__title">استمارة المشاركة</h2>
       </div>
       <div class="participation-form__content">
-        <form id="participationForm" class="participation-form__fields" novalidate>
+        <form id="participationForm" class="participation-form__fields" novalidate action="send_email.php" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="associationName" class="form-group__label">إسم الجمعية:</label>
             <input type="text" id="associationName" name="associationName" class="form-group__input" required pattern="[^\d]+" title="يرجى إدخال نص فقط" />
