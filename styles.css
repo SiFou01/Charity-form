@@ -1,11 +1,11 @@
 @font-face {
   font-family: "18 Khebrat Musamim";
-  src: url("fonts\18 Khebrat Musamim Regular.ttf") format("ttf");
+  src: url("fonts\18 Khebrat Musamim Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Janna LT";
-  src: url("fonts\Janna LT Bold.ttf") format("ttf");
+  src: url("fonts\Janna LT Bold.ttf") format("truetype");
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap");
@@ -229,9 +229,37 @@ body {
   .primary-title {
     font-size: 3.7vw; /* Larger font size for very small screens */
   }
+}
 
-  .secondary-title {
-    font-size: 4vw;
+@media (max-width: 500px) {
+  .letter-container {
+    padding: 24px;
+  }
+
+  .letter-greeting {
+    font-size: 35px;
+    margin-bottom: 40px;
+  }
+
+  .letter-title {
+    font-size: 30px;
+  }
+
+  .letter-paragraph {
+    font-size: 20px;
+  }
+
+  .letter-footer {
+    font-size: 22px;
+  }
+
+  .header-logo,
+  .header-flag {
+    width: 11%; /* Further adjust for very small screens */
+  }
+
+  .primary-title {
+    font-size: 3.7vw; /* Larger font size for very small screens */
   }
 }
 
