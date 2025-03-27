@@ -151,3 +151,42 @@ if (participationForm) {
     });
   }
 }
+
+document.getElementById('submitButton').addEventListener('click', function () {
+  // Get the participation form and declarant name input
+  const participationForm = document.getElementById('participationForm');
+  const declarantNameInput = document.getElementById('declarantName');
+
+  // Create a FormData object from the participation form
+  const formData = new FormData(participationForm);
+
+  // Append the declarant name to the FormData object
+  if (declarantNameInput && declarantNameInput.value.trim()) {
+    formData.append('declarantName', declarantNameInput.value.trim());
+  } else {
+    alert('يرجى إدخال اسم المصرح.');
+    declarantNameInput.focus();
+    return; // Stop submission if declarant name is empty
+  }
+
+  // Send the FormData object via fetch
+  fetch('send_email.php', {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      console.log('Server Response:', data);
+      if (data.trim() === 'success') {
+        alert('تم إرسال الاستمارة بنجاح!');
+      } else {
+        alert('حدث خطأ أثناء إرسال الاستمارة.');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('حدث خطأ أثناء إرسال الاستمارة.');
+    });
+    console.log("Declarant Name:", declarantName);
+
+});

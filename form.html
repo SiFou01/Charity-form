@@ -196,7 +196,11 @@
 
       <p class="registration-form__declaration">
         يشهد السيد
-        <input type="text" id="declarantName" name="declarantName" class="declaration-input" placeholder="الاسم واللقب" required />
+        <form id="declarantForm" class="declaration-form">
+          <input type="text" id="declarantName" name="declarantName" class="declaration-input" placeholder="الاسم واللقب" required />
+        </form>
+      </p>
+       <p class="registration-form__declaration">
         بصفته رئيس الجمعية أنه قد اطلع على النظام الداخلي للمشاركة ووافق عليه.
       </p>
 
@@ -206,7 +210,7 @@
         <span class="error-message" id="agreeRulesError"></span>
       </div>
 
-      <button type="submit" class="registration-form__submit" id="submitButton" form="participationForm">إرسال الاستمارة</button>
+      <button type="button" class="registration-form__submit" id="submitButton">إرسال الاستمارة</button>
     </div>
   </article>
 
