@@ -167,131 +167,6 @@ body {
   text-align: right;
 }
 
-@media (max-width: 991px) {
-  .letter-container {
-    padding: 32px;
-  }
-
-  .letter-greeting {
-    font-size: 45px;
-  }
-
-  .letter-title {
-    font-size: 35px;
-  }
-
-  .letter-paragraph {
-    font-size: 22px;
-  }
-
-  .letter-footer {
-    font-size: 24px;
-  }
-
-  .header-logo,
-  .header-flag {
-    width: 11%; /* Adjust for smaller screens */
-  }
-
-  .primary-title {
-    font-size: 3.7vw; /* Larger font size for smaller screens */
-  }
-
-}
-
-@media (max-width: 640px) {
-
-  .main-logo {
-    width: 80vw;
-    height: auto;
-    opacity: 0.8;
-    object-fit: contain;
-  }
-
-  .letter-container {
-    padding: 24px;
-  }
-
-  .letter-greeting {
-    font-size: 35px;
-    margin-bottom: 40px;
-  }
-
-  .letter-title {
-    font-size: 30px;
-  }
-
-  .letter-paragraph {
-    font-size: 20px;
-  }
-
-  .letter-footer {
-    font-size: 22px;
-  }
-
-  .header-logo,
-  .header-flag {
-    width: 11%; /* Further adjust for very small screens */
-  }
-
-  .primary-title {
-    font-size: 3.7vw; /* Larger font size for very small screens */
-  }
-}
-
-@media (max-width: 500px) {
-
-  .main-logo {
-    width: 80vw;
-    height: auto;
-    opacity: 0.8;
-    object-fit: contain;
-  }
-
-  .page-header {
-    height: auto; /* Allow height to adjust dynamically */
-    padding: 16px 5%; /* Adjust padding for responsiveness */
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Distribute items evenly */
-    gap: 20px; /* Add spacing between elements */
-    border-bottom: 1px solid #000;
-    background-color: #fff;
-    text-align: center; /* Center the text */
-    flex-direction: column;
-  }
-
-  .letter-container {
-    padding: 24px;
-  }
-
-  .letter-greeting {
-    font-size: 35px;
-    margin-bottom: 40px;
-  }
-
-  .letter-title {
-    font-size: 30px;
-  }
-
-  .letter-paragraph {
-    font-size: 20px;
-  }
-
-  .letter-footer {
-    font-size: 22px;
-  }
-
-  .header-logo,
-  .header-flag {
-    width: 17%; /* Further adjust for very small screens */
-  }
-
-  .primary-title {
-    font-size:4.5vw; /* Larger font size for very small screens */
-  }
-}
-
 #form-container {
   max-width: 700px;
   margin: 40px auto;
@@ -533,7 +408,7 @@ body {
   font-family: "18 Khebrat Musamim", sans-serif;
   font-size: 24px;
   font-weight: 500;
-  text-align: right;
+  text-align: justify;
   line-height: 1.5;
 }
 
@@ -586,7 +461,67 @@ body {
   background-color: #6ecf2a;
 }
 
+ul {
+  list-style-position: inside;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  font-family: "Janna LT", sans-serif;
+  margin-top: 5px;
+  display: none; /* Hidden by default */
+}
+
+.declaration-input {
+  display: inline-block;
+  width: 16vw; /* Big enough for first and last name */
+  padding: 8px;
+  font-size: 18px;
+  font-family: "Janna LT", sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px; /* Add spacing around the input */
+}
+
+.declaration-input:invalid {
+  border-color: red; /* Highlight border in red if invalid */
+}
+
+.declaration-input:valid {
+  border-color: #ccc; /* Reset border color when valid */
+}
+
 @media (max-width: 991px) {
+  .letter-container {
+    padding: 32px;
+  }
+
+  .letter-greeting {
+    font-size: 45px;
+  }
+
+  .letter-title {
+    font-size: 35px;
+  }
+
+  .letter-paragraph {
+    font-size: 22px;
+  }
+
+  .letter-footer {
+    font-size: 24px;
+  }
+
+  .header-logo,
+  .header-flag {
+    width: 11%; /* Adjust for smaller screens */
+  }
+
+  .primary-title {
+    font-size: 3.7vw; /* Larger font size for smaller screens */
+  }
+
   .participation-form {
     padding: 20px;
   }
@@ -629,76 +564,193 @@ body {
     height: 60px;
     font-size: 24px;
   }
+
 }
 
 @media (max-width: 640px) {
+
+  .main-logo {
+    width: 80vw;
+    height: auto;
+    opacity: 0.8;
+    object-fit: contain;
+  }
+
+  .letter-container {
+    padding: 24px;
+  }
+
+  .letter-greeting {
+    font-size: 35px;
+    margin-bottom: 40px;
+  }
+
+  .letter-title {
+    font-size: 30px;
+  }
+
+  .letter-paragraph {
+    font-size: 20px;
+  }
+
+  .letter-footer {
+    font-size: 22px;
+  }
+
+  .header-logo,
+  .header-flag {
+    width: 11%; /* Further adjust for very small screens */
+  }
+
+  .primary-title {
+    font-size: 3.7vw; /* Larger font size for very small screens */
+  }
+
   .participation-form {
-    padding: 16px;
+    padding: 20px;
   }
 
   .participation-form__title {
-    font-size: 32px;
+    font-size: 40px;
   }
 
   .participation-form__content {
-    padding: 16px;
+    padding: 24px;
   }
 
   .participation-form__fields {
-    gap: 16px;
+    gap: 20px;
   }
 
   .registration-form {
-    max-width: 640px;
-    padding: 10px;
+    max-width: 991px;
+    padding: 15px;
   }
 
   .registration-form__title {
-    font-size: 28px;
+    font-size: 32px;
   }
 
   .registration-form__rule {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .registration-form__declaration {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .registration-form__agreement-label {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .registration-form__submit {
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
+    width: 280px;
+    height: 60px;
+    font-size: 24px;
   }
+
+  .declaration-input {
+    font-size: 2.3vw;
+  }
+
 }
 
-.error-message {
-  color: red;
-  font-size: 14px;
-  font-family: "Janna LT", sans-serif;
-  margin-top: 5px;
-  display: none; /* Hidden by default */
-}
+@media (max-width: 500px) {
 
-.declaration-input {
-  display: inline-block;
-  width: 250px; /* Big enough for first and last name */
-  padding: 8px;
-  font-size: 18px;
-  font-family: "Janna LT", sans-serif;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 0 5px; /* Add spacing around the input */
-}
+  .main-logo {
+    width: 80vw;
+    height: auto;
+    opacity: 0.8;
+    object-fit: contain;
+  }
 
-.declaration-input:invalid {
-  border-color: red; /* Highlight border in red if invalid */
-}
+  .page-header {
+    height: auto; /* Allow height to adjust dynamically */
+    padding: 16px 5%; /* Adjust padding for responsiveness */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute items evenly */
+    gap: 20px; /* Add spacing between elements */
+    border-bottom: 1px solid #000;
+    background-color: #fff;
+    text-align: center; /* Center the text */
+    flex-direction: column;
+  }
 
-.declaration-input:valid {
-  border-color: #ccc; /* Reset border color when valid */
+  .letter-container {
+    padding: 24px;
+  }
+
+  .letter-greeting {
+    font-size: 35px;
+    margin-bottom: 40px;
+  }
+
+  .letter-title {
+    font-size: 8vw;
+  }
+
+  .letter-paragraph {
+    font-size: 5vw;
+  }
+
+  .letter-footer {
+    font-size: 7vw;
+  }
+
+  .header-logo,
+  .header-flag {
+    width: 17%; /* Further adjust for very small screens */
+  }
+
+  .primary-title {
+    font-size:4.5vw; /* Larger font size for very small screens */
+  }
+
+  .participation-form {
+    padding: 20px;
+  }
+
+  .participation-form__title {
+    font-size: 40px;
+  }
+
+  .participation-form__content {
+    padding: 24px;
+  }
+
+  .participation-form__fields {
+    gap: 20px;
+  }
+
+  .registration-form {
+    max-width: 991px;
+    padding: 15px;
+  }
+
+  .registration-form__title {
+    font-size: 8vw;
+  }
+
+  .registration-form__rule {
+    font-size: 5vw;
+  }
+
+  .registration-form__declaration {
+    font-size: 6vw;
+  }
+
+  .registration-form__agreement-label {
+    font-size: 24px;
+  }
+
+  .registration-form__submit {
+    width: 280px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .declaration-input {
+    font-size: 2.8vw;
+  }
 }
