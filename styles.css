@@ -78,8 +78,8 @@ body {
 }
 
 .main-logo {
-  width: 558px;
-  height: 558px;
+  width: 50vw;
+  height: auto;
   opacity: 0.8;
   object-fit: contain;
 }
@@ -200,6 +200,14 @@ body {
 }
 
 @media (max-width: 640px) {
+
+  .main-logo {
+    width: 80vw;
+    height: auto;
+    opacity: 0.8;
+    object-fit: contain;
+  }
+
   .letter-container {
     padding: 24px;
   }
@@ -232,6 +240,27 @@ body {
 }
 
 @media (max-width: 500px) {
+
+  .main-logo {
+    width: 80vw;
+    height: auto;
+    opacity: 0.8;
+    object-fit: contain;
+  }
+
+  .page-header {
+    height: auto; /* Allow height to adjust dynamically */
+    padding: 16px 5%; /* Adjust padding for responsiveness */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute items evenly */
+    gap: 20px; /* Add spacing between elements */
+    border-bottom: 1px solid #000;
+    background-color: #fff;
+    text-align: center; /* Center the text */
+    flex-direction: column;
+  }
+
   .letter-container {
     padding: 24px;
   }
@@ -255,11 +284,11 @@ body {
 
   .header-logo,
   .header-flag {
-    width: 11%; /* Further adjust for very small screens */
+    width: 17%; /* Further adjust for very small screens */
   }
 
   .primary-title {
-    font-size: 3.7vw; /* Larger font size for very small screens */
+    font-size:4.5vw; /* Larger font size for very small screens */
   }
 }
 
