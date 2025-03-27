@@ -169,6 +169,20 @@ document.getElementById('submitButton').addEventListener('click', function () {
     return; // Stop submission if declarant name is empty
   }
 
+  // Collect table data
+  const tableRows = document.querySelectorAll('#boardTable tbody tr');
+  tableRows.forEach((row, index) => {
+    const nameInput = row.querySelector('input[name^="boardName"]');
+    const jobInput = row.querySelector('input[name^="boardJob"]');
+    const roleInput = row.querySelector('input[name^="boardRole"]');
+
+    if (nameInput && jobInput && roleInput) {
+      formData.append(`boardMembers[${index}][name]`, nameInput.value.trim());
+      formData.append(`boardMembers[${index}][job]`, jobInput.value.trim());
+      formData.append(`boardMembers[${index}][role]`, roleInput.value.trim());
+    }
+  });
+
   // Send the FormData object via fetch
   fetch('send_email.php', {
     method: 'POST',
@@ -187,6 +201,4 @@ document.getElementById('submitButton').addEventListener('click', function () {
       console.error('Error:', error);
       alert('حدث خطأ أثناء إرسال الاستمارة.');
     });
-    console.log("Declarant Name:", declarantName);
-
 });
