@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Brevo API key
-    $apiKey = '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';
+    $apiKey = '';
 
     // Collect form data
     $associationName = $_POST['associationName'];
