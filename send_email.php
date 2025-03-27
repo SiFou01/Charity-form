@@ -21,8 +21,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $widowsOrphans = $_POST['widowsOrphans'] ?? '';
     $declarantName = $_POST['declarantName'] ?? '';
 
-    // Log the declarant name specifically
+    // Collect and format board members' data
+    $boardMembers = [];
+    if (isset($_POST['boardMembers']) && is_array($_POST['boardMembers'])) {
+        foreach ($_POST['boardMembers'] as $index => $member) {
+            $name = $member['name'] ?? 'N/A';
+            $job = $member['job'] ?? 'N/A';
+            $role = $member['role'] ?? 'N/A';
+            $boardMembers[] = "Member " . ($index + 1) . ": $name, $job, $role";
+        }
+    }
+
+    // Format board members as a plain list
+    $boardMembersList = implode("\n", $boardMembers);
+
+    // Log the declarant name and board members for debugging
     error_log("Declarant Name: $declarantName");
+    error_log("Board Members: " . print_r($boardMembers, true));
 
     // Handle file upload
     $encodedFile = '';
@@ -48,10 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p><strong>Fields of Activity:</strong> $fieldsOfActivity</p>
         <p><strong>Widows and Orphans Section:</strong> $widowsOrphans</p>
         <p><strong>Declarant Name:</strong> $declarantName</p>
+        <h2>Board Members:</h2>
+        <pre>$boardMembersList</pre>
     ";
 
     // Configure Brevo API
-    $apiKey = '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';
+    $apiKey = '';
     $config = Configuration::getDefaultConfiguration()->setApiKey('api-key', $apiKey);
     $apiInstance = new TransactionalEmailsApi(new Client(), $config);
 
