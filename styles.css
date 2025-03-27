@@ -319,7 +319,6 @@ body {
 .form-group__input,
 .form-group__textarea,
 .form-group__file {
-  width: 100%;
   height: 50px;
   background-color: #d9d9d9;
   border-radius: 10px;
@@ -565,6 +564,16 @@ ul {
     font-size: 24px;
   }
 
+  #boardTable input[type="text"] {
+    width: 80%; /* Reduce the width of the input fields */
+    height: 30px; /* Reduce the height of the input fields */
+    font-size: 12px; /* Reduce the font size */
+    padding: 4px; /* Reduce the padding */
+    border: 1px solid #ccc; /* Keep the border for clarity */
+    border-radius: 4px; /* Optional: Add rounded corners */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+
 }
 
 @media (max-width: 640px) {
@@ -651,6 +660,33 @@ ul {
  
   .declaration-input {
     font-size: 2.3vw;
+  }
+
+  #boardTable {
+    display: block; /* Make the table block-level */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    width: 100%; /* Ensure it fits within the container */
+  }
+
+  #boardTable table {
+    width: 100%; /* Ensure the table stretches to fit */
+    border-collapse: collapse; /* Collapse borders for better appearance */
+  }
+
+  #boardTable th, #boardTable td {
+    font-size: 12px; /* Reduce font size for smaller screens */
+    padding: 1px; /* Reduce padding for smaller screens */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+
+  #boardTable input[type="text"] {
+    width: 80%; /* Reduce the width of the input fields */
+    height: 30px; /* Reduce the height of the input fields */
+    font-size: 12px; /* Reduce the font size */
+    padding: 4px; /* Reduce the padding */
+    border: 1px solid #ccc; /* Keep the border for clarity */
+    border-radius: 4px; /* Optional: Add rounded corners */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
   }
 
 }
