@@ -1,11 +1,11 @@
 @font-face {
   font-family: "18 Khebrat Musamim";
-  src: url("fonts/kherbat.ttf") format("truetype");
+  src: url("/Charity-form/fonts/kherbat.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Janna LT";
-  src: url("fonts/janna.ttf") format("truetype");
+  src: url("/Charity-form/fonts/janna.ttf") format("truetype");
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap");
