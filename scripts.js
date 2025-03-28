@@ -129,6 +129,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     console.log('Form Data:', formData);
-    alert('تم إرسال الاستمارة بنجاح!');
+
+    // Simulate successful submission (replace this with your actual email-sending logic)
+    fetch('send_email.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => {
+        if (response.ok) {
+          // Redirect to the Thank You page
+          window.location.href = 'thank-you.html';
+        } else {
+          alert('حدث خطأ أثناء إرسال الاستمارة. يرجى المحاولة مرة أخرى.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('حدث خطأ أثناء إرسال الاستمارة. يرجى المحاولة مرة أخرى.');
+      });
   });
 });
