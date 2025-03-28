@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault(); // Prevent the default form submission behavior
 
     let isValid = true;
+    let firstInvalidElement = null; // Track the first invalid input
 
     // Clear previous error messages
     document.querySelectorAll('.error-message').forEach(error => {
@@ -39,12 +40,22 @@ document.addEventListener('DOMContentLoaded', function () {
         isValid = false;
         errorElement.textContent = message;
         errorElement.style.display = 'block'; // Ensure the error message is visible
+
+        // Track the first invalid input
+        if (!firstInvalidElement) {
+          firstInvalidElement = input;
+        }
       } else if (id === 'phone' || id === 'fax') {
         // Additional validation for phone and fax
         if (!/^\d{10}$/.test(input.value)) {
           isValid = false;
           errorElement.textContent = 'يرجى إدخال رقم مكون من 10 أرقام فقط.';
           errorElement.style.display = 'block';
+
+          // Track the first invalid input
+          if (!firstInvalidElement) {
+            firstInvalidElement = input;
+          }
         } else {
           errorElement.style.display = 'none'; // Hide the error message if valid
         }
@@ -60,6 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
       isValid = false;
       agreeRulesError.textContent = 'يجب الموافقة على النظام الداخلي.';
       agreeRulesError.style.display = 'block';
+
+      // Track the first invalid input
+      if (!firstInvalidElement) {
+        firstInvalidElement = agreeCheckbox;
+      }
     }
 
     // Validate table rows
@@ -79,17 +95,40 @@ document.addEventListener('DOMContentLoaded', function () {
       isValid = false;
       boardTableError.textContent = 'يرجى ملء سبعة صفوف على الأقل في الجدول.';
       boardTableError.style.display = 'block';
+
+      // Track the first invalid input
+      if (!firstInvalidElement) {
+        firstInvalidElement = document.getElementById('boardTable');
+      }
     } else {
       boardTableError.style.display = 'none';
     }
 
-    // Prevent form submission if invalid
-    if (!isValid) {
+    // Scroll to the first invalid input and focus on it
+    if (!isValid && firstInvalidElement) {
+      firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstInvalidElement.focus();
       return;
     }
 
-    // If valid, log the form data (or handle it as needed)
-    console.log('Form submitted successfully!');
+    // Collect and log form data
+    const formData = {};
+    fields.forEach(({ id }) => {
+      const input = document.getElementById(id);
+      formData[id] = input.value.trim();
+    });
+
+    // Collect table data
+    formData.boardMembers = [];
+    tableRows.forEach(row => {
+      const inputs = row.querySelectorAll('input');
+      const rowData = Array.from(inputs).map(input => input.value.trim());
+      if (rowData.every(value => value !== '')) {
+        formData.boardMembers.push(rowData);
+      }
+    });
+
+    console.log('Form Data:', formData);
     alert('تم إرسال الاستمارة بنجاح!');
   });
 });
