@@ -111,39 +111,20 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // Collect and log form data
-    const formData = {};
-    fields.forEach(({ id }) => {
-      const input = document.getElementById(id);
-      formData[id] = input.value.trim();
-    });
+    // Collect all form data, including the file
+    const formData = new FormData(form);
 
-    // Collect table data
-    formData.boardMembers = [];
-    tableRows.forEach(row => {
-      const inputs = row.querySelectorAll('input');
-      const rowData = Array.from(inputs).map(input => input.value.trim());
-      if (rowData.every(value => value !== '')) {
-        formData.boardMembers.push(rowData);
-      }
-    });
-
-    console.log('Form Data:', formData);
-
-    // Simulate successful submission (replace this with your actual email-sending logic)
     fetch('send_email.php', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
+      body: formData, // Send the FormData object
     })
       .then(response => {
         if (response.ok) {
-          // Show a success alert
           alert('تم إرسال الاستمارة بنجاح!');
         } else {
-          alert('حدث خطأ أثناء إرسال الاستمارة. يرجى المحاولة مرة أخرى.');
+          return response.json().then(data => {
+            alert(data.message || 'حدث خطأ أثناء إرسال الاستمارة. يرجى المحاولة مرة أخرى.');
+          });
         }
       })
       .catch(error => {
