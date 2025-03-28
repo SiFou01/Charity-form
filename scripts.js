@@ -1,204 +1,154 @@
+// Redirect to the form page
 function redirectToForm() {
-  window.location.href = "form.html"; // Redirect to the form page
+  window.location.href = "form.html";
 }
 
-function addRow() {
-  const table = document.getElementById('boardTable').getElementsByTagName('tbody')[0];
-  const newRow = document.createElement('tr');
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('participationForm');
 
-  newRow.innerHTML = `
-    <td><input type="text" name="boardName[]" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
-    <td><input type="text" name="boardJob[]" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
-    <td><input type="text" name="boardRole[]" required pattern="[^\d]+" title="يرجى إدخال نص فقط" /></td>
-  `;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission behavior
 
-  table.appendChild(newRow);
-}
-
-// Enable the submit button only when the checkbox is checked
-const agreeCheckbox = document.getElementById('agreeRules');
-const submitButton = document.getElementById('submitButton');
-const participationForm = document.getElementById('participationForm');
-
-if (agreeCheckbox && submitButton) {
-  agreeCheckbox.addEventListener('change', function () {
-    submitButton.disabled = !this.checked; // Enable/disable the submit button based on checkbox state
-    const errorElement = document.getElementById('agreeRulesError');
-    if (this.checked) {
-      errorElement.style.display = 'none'; // Hide error message when checked
-    }
-  });
-}
-
-// Prevent form submission if the checkbox is not checked
-if (participationForm) {
-  participationForm.addEventListener('submit', function (event) {
-    const errorElement = document.getElementById('agreeRulesError');
-    if (!agreeCheckbox.checked) {
-      event.preventDefault(); // Prevent form submission
-      errorElement.textContent = 'يرجى الموافقة على النظام الداخلي قبل إرسال الاستمارة.'; // Show error message
-      errorElement.style.display = 'block';
-      agreeCheckbox.focus(); // Focus on the checkbox
-    }
-  });
-}
-
-// Add error message handling for the participation form
-if (participationForm) {
-  participationForm.addEventListener('submit', function (event) {
     let isValid = true;
-    let firstErrorElement = null;
+    let firstInvalidElement = null; // Track the first invalid input
 
+    // Clear previous error messages
+    document.querySelectorAll('.error-message').forEach(error => {
+      error.textContent = '';
+      error.style.display = 'none'; // Hide all error messages initially
+    });
+
+    // Validate required fields
     const fields = [
       { id: 'associationName', errorId: 'associationNameError', message: 'يرجى إدخال اسم الجمعية.' },
       { id: 'address', errorId: 'addressError', message: 'يرجى إدخال العنوان.' },
-      { id: 'phone', errorId: 'phoneError', message: 'يرجى إدخال رقم الهاتف بشكل صحيح.' },
-      { id: 'fax', errorId: 'faxError', message: 'يرجى إدخال رقم الفاكس بشكل صحيح.' },
-      { id: 'website', errorId: 'websiteError', message: 'يرجى إدخال رابط الموقع الإلكتروني بشكل صحيح.' },
-      { id: 'email', errorId: 'emailError', message: 'يرجى إدخال البريد الإلكتروني بشكل صحيح.' },
-      { id: 'facebook', errorId: 'facebookError', message: 'يرجى إدخال رابط صفحة الفايسبوك بشكل صحيح.' },
+      { id: 'phone', errorId: 'phoneError', message: 'يرجى إدخال رقم الهاتف.' },
+      { id: 'fax', errorId: 'faxError', message: 'يرجى إدخال رقم الفاكس.' },
+      { id: 'email', errorId: 'emailError', message: 'يرجى إدخال بريد إلكتروني صحيح.' },
+      { id: 'facebook', errorId: 'facebookError', message: 'يرجى إدخال رابط صفحة الفايسبوك.' },
       { id: 'approvalDoc', errorId: 'approvalDocError', message: 'يرجى تحميل قرار الإعتماد بصيغة PDF.' },
       { id: 'fieldsOfActivity', errorId: 'fieldsOfActivityError', message: 'يرجى إدخال ميادين نشاط الجمعية.' },
       { id: 'widowsOrphans', errorId: 'widowsOrphansError', message: 'يرجى إدخال موجز تعريفي لقسم التكفل بالأرامل والايتام.' },
+      { id: 'declarantName', errorId: 'declarantNameError', message: 'يرجى إدخال اسم المعلن.' },
     ];
 
     fields.forEach(({ id, errorId, message }) => {
-      const field = document.getElementById(id);
+      const input = document.getElementById(id);
       const errorElement = document.getElementById(errorId);
 
-      if (field) {
-        if (id === 'approvalDoc') {
-          // Special validation for file input
-          if (!field.files || field.files.length === 0) {
-            isValid = false;
-            errorElement.textContent = message;
-            errorElement.style.display = 'block';
-            if (!firstErrorElement) {
-              firstErrorElement = field;
-            }
-          } else {
-            errorElement.style.display = 'none';
-          }
-        } else if (!field.value.trim()) {
-          // Check if the field is empty
+      if (!input.value.trim()) {
+        isValid = false;
+        errorElement.textContent = message;
+        errorElement.style.display = 'block'; // Ensure the error message is visible
+
+        // Track the first invalid input
+        if (!firstInvalidElement) {
+          firstInvalidElement = input;
+        }
+      } else if (id === 'phone' || id === 'fax') {
+        // Additional validation for phone and fax
+        if (!/^\d{10}$/.test(input.value)) {
           isValid = false;
-          errorElement.textContent = message;
+          errorElement.textContent = 'يرجى إدخال رقم مكون من 10 أرقام فقط.';
           errorElement.style.display = 'block';
-          if (!firstErrorElement) {
-            firstErrorElement = field; // Capture the first field with an error
-          }
-        } else if (!field.checkValidity()) {
-          // Check for other validation errors
-          isValid = false;
-          errorElement.textContent = message;
-          errorElement.style.display = 'block';
-          if (!firstErrorElement) {
-            firstErrorElement = field;
+
+          // Track the first invalid input
+          if (!firstInvalidElement) {
+            firstInvalidElement = input;
           }
         } else {
-          errorElement.style.display = 'none';
+          errorElement.style.display = 'none'; // Hide the error message if valid
         }
+      } else {
+        errorElement.style.display = 'none'; // Hide the error message if the input is valid
       }
     });
 
-    // Validate the table
+    // Validate checkbox
+    const agreeCheckbox = document.getElementById('agreeRules');
+    const agreeRulesError = document.getElementById('agreeRulesError');
+    if (!agreeCheckbox.checked) {
+      isValid = false;
+      agreeRulesError.textContent = 'يجب الموافقة على النظام الداخلي.';
+      agreeRulesError.style.display = 'block';
+
+      // Track the first invalid input
+      if (!firstInvalidElement) {
+        firstInvalidElement = agreeCheckbox;
+      }
+    }
+
+    // Validate table rows
     const tableRows = document.querySelectorAll('#boardTable tbody tr');
     const boardTableError = document.getElementById('boardTableError');
-    const filledRows = Array.from(tableRows).filter(row => {
+    let filledRows = 0;
+
+    tableRows.forEach(row => {
       const inputs = row.querySelectorAll('input');
-      return Array.from(inputs).every(input => input.value.trim() !== '');
+      const isRowFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+      if (isRowFilled) {
+        filledRows++;
+      }
     });
 
-    if (filledRows.length < 7) {
+    if (filledRows < 7) {
       isValid = false;
       boardTableError.textContent = 'يرجى ملء سبعة صفوف على الأقل في الجدول.';
       boardTableError.style.display = 'block';
-      if (!firstErrorElement) {
-        firstErrorElement = document.getElementById('boardTable');
+
+      // Track the first invalid input
+      if (!firstInvalidElement) {
+        firstInvalidElement = document.getElementById('boardTable');
       }
     } else {
       boardTableError.style.display = 'none';
     }
 
-    // Validate declarant name input
-    const declarantName = document.getElementById('declarantName');
-    if (declarantName && !declarantName.value.trim()) {
-      isValid = false;
-      declarantName.style.borderColor = 'red'; // Highlight border in red
-      if (!firstErrorElement) {
-        firstErrorElement = declarantName;
-      }
-    } else if (declarantName) {
-      declarantName.style.borderColor = ''; // Reset border color
+    // Scroll to the first invalid input and focus on it
+    if (!isValid && firstInvalidElement) {
+      firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstInvalidElement.focus();
+      return;
     }
 
-    if (!isValid) {
-      event.preventDefault(); // Prevent form submission if there are errors
-      if (firstErrorElement) {
-        firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the first error
-        firstErrorElement.focus(); // Focus on the first error field
-      }
-    }
-  });
+    // Collect and log form data
+    const formData = {};
+    fields.forEach(({ id }) => {
+      const input = document.getElementById(id);
+      formData[id] = input.value.trim();
+    });
 
-  // Reset border color on input
-  const declarantName = document.getElementById('declarantName');
-  if (declarantName) {
-    declarantName.addEventListener('input', function () {
-      if (this.value.trim()) {
-        this.style.borderColor = ''; // Reset border color when valid
+    // Collect table data
+    formData.boardMembers = [];
+    tableRows.forEach(row => {
+      const inputs = row.querySelectorAll('input');
+      const rowData = Array.from(inputs).map(input => input.value.trim());
+      if (rowData.every(value => value !== '')) {
+        formData.boardMembers.push(rowData);
       }
     });
-  }
-}
 
-document.getElementById('submitButton').addEventListener('click', function () {
-  // Get the participation form and declarant name input
-  const participationForm = document.getElementById('participationForm');
-  const declarantNameInput = document.getElementById('declarantName');
+    console.log('Form Data:', formData);
 
-  // Create a FormData object from the participation form
-  const formData = new FormData(participationForm);
-
-  // Append the declarant name to the FormData object
-  if (declarantNameInput && declarantNameInput.value.trim()) {
-    formData.append('declarantName', declarantNameInput.value.trim());
-  } else {
-    alert('يرجى إدخال اسم المصرح.');
-    declarantNameInput.focus();
-    return; // Stop submission if declarant name is empty
-  }
-
-  // Collect table data
-  const tableRows = document.querySelectorAll('#boardTable tbody tr');
-  tableRows.forEach((row, index) => {
-    const nameInput = row.querySelector('input[name^="boardName"]');
-    const jobInput = row.querySelector('input[name^="boardJob"]');
-    const roleInput = row.querySelector('input[name^="boardRole"]');
-
-    if (nameInput && jobInput && roleInput) {
-      formData.append(`boardMembers[${index}][name]`, nameInput.value.trim());
-      formData.append(`boardMembers[${index}][job]`, jobInput.value.trim());
-      formData.append(`boardMembers[${index}][role]`, roleInput.value.trim());
-    }
-  });
-
-  // Send the FormData object via fetch
-  fetch('send_email.php', {
-    method: 'POST',
-    body: formData,
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      console.log('Server Response:', data);
-      if (data.trim() === 'success') {
-        alert('تم إرسال الاستمارة بنجاح!');
-      } else {
-        alert('حدث خطأ أثناء إرسال الاستمارة.');
-      }
+    // Simulate successful submission (replace this with your actual email-sending logic)
+    fetch('send_email.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert('حدث خطأ أثناء إرسال الاستمارة.');
-    });
+      .then(response => {
+        if (response.ok) {
+          // Show a success alert
+          alert('تم إرسال الاستمارة بنجاح!');
+        } else {
+          alert('حدث خطأ أثناء إرسال الاستمارة. يرجى المحاولة مرة أخرى.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('حدث خطأ أثناء إرسال الاستمارة. يرجى المحاولة مرة أخرى.');
+      });
+  });
 });
