@@ -42,7 +42,7 @@ if ($data) {
 
     // Brevo API endpoint and API key
     $url = 'https://api.brevo.com/v3/smtp/email';
-    $apiKey = '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'; // Replace with your Brevo API key
+    $apiKey = ''; // Replace with your Brevo API key
 
     // Prepare the email payload
     $payload = [

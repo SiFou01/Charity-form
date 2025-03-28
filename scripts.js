@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function () {
     })
       .then(response => {
         if (response.ok) {
-          // Redirect to the Thank You page
-          window.location.href = 'thank-you.html';
+          // Show a success alert
+          alert('تم إرسال الاستمارة بنجاح!');
         } else {
           alert('حدث خطأ أثناء إرسال الاستمارة. يرجى المحاولة مرة أخرى.');
         }
