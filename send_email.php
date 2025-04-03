@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fieldsOfActivity = $_POST['fieldsOfActivity'] ?? '';
     $widowsOrphans = $_POST['widowsOrphans'] ?? '';
     $declarantName = $_POST['declarantName'] ?? '';
-    $boardMembers = isset($_POST['boardMembers']) ? json_decode($_POST['boardMembers'], true) : [];
+    $tableData = $_POST['tableData'] ?? ''; // Retrieve the table data
 
     // Check if a file was uploaded
     if (isset($_FILES['approvalDoc']) && $_FILES['approvalDoc']['error'] === UPLOAD_ERR_OK) {
@@ -44,8 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <ul>
     ";
 
-    foreach ($boardMembers as $member) {
-        $message .= "<li>" . implode(' - ', $member) . "</li>";
+    // Process the table data into an organized list
+    $rows = explode("\n", trim($tableData)); // Split the table data into rows
+    foreach ($rows as $row) {
+        $columns = explode(', ', $row); // Split each row into columns
+        if (count($columns) === 3) { // Ensure the row has exactly 3 columns
+            $message .= "<li><strong>الإسم واللقب:</strong> {$columns[0]}, <strong>المهنة:</strong> {$columns[1]}, <strong>الصفة في الجمعية:</strong> {$columns[2]}</li>";
+        }
     }
 
     $message .= "</ul>";
@@ -105,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['message' => 'Failed to send email', 'response' => $response]);
     }
 } else {
-    http_response_code(400);
-    echo json_encode(['message' => 'Invalid request method']);
+    http_response_code(405);
+    echo json_encode(['message' => 'Method not allowed']);
 }
 ?>

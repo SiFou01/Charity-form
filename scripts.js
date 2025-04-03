@@ -5,6 +5,21 @@ function redirectToForm() {
 
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('participationForm');
+  const approvalDocInput = document.getElementById('approvalDoc');
+  const approvalDocError = document.getElementById('approvalDocError');
+
+  // Validate file type on file input change
+  approvalDocInput.addEventListener('change', function () {
+    const file = approvalDocInput.files[0];
+    if (file && file.type !== 'application/pdf') {
+      approvalDocError.textContent = 'يرجى تحميل ملف بصيغة PDF فقط.';
+      approvalDocError.style.display = 'block';
+      approvalDocInput.value = ''; // Clear the invalid file
+    } else {
+      approvalDocError.textContent = '';
+      approvalDocError.style.display = 'none';
+    }
+  });
 
   form.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -83,11 +98,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const boardTableError = document.getElementById('boardTableError');
     let filledRows = 0;
 
+    let tableData = ''; // Initialize a string to store table data
+
     tableRows.forEach(row => {
       const inputs = row.querySelectorAll('input');
       const isRowFilled = Array.from(inputs).every(input => input.value.trim() !== '');
       if (isRowFilled) {
         filledRows++;
+        // Serialize the row data into a string
+        const rowData = Array.from(inputs).map(input => input.value.trim()).join(', ');
+        tableData += rowData + '\n'; // Add the row data to the tableData string
       }
     });
 
@@ -113,6 +133,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Collect all form data, including the file
     const formData = new FormData(form);
+
+    // Append the serialized table data to the FormData object
+    formData.append('tableData', tableData);
 
     fetch('send_email.php', {
       method: 'POST',
